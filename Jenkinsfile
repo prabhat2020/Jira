@@ -86,7 +86,7 @@ post {
        }
     }
 
-}
+
 void create_newjira_issue() {
     node {
       stage('JIRA') {
