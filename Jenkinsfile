@@ -37,7 +37,7 @@ void create_newjira_issue() {
         def NewJiraIssue = [fields: [project: [key: 'DEV'],
             summary: 'Maven Build',
             description: 'Facing some issue in building Maven Code',
-            issuetype: [id: 'Task']]]
+            issuetype: '[http://51.145.191.144:8080/] Task']]
 
 
     response = jiraNewIssue issue: NewJiraIssue ,site: 'JIRA'
