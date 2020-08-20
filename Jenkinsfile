@@ -38,23 +38,45 @@ pipeline {
         
   }
 post {
-       always {
-            echo 'check for jira'
-     create_newjira_issue()
+       success 
+        {
+         create_newjira_issuesuc()
+        }
+        failure
+       {
+        create_newjira_issuefai()
        }
-    }
+       }
+    
 
 }
-void create_newjira_issue() {
+
+void create_newjira_issuefai() {
     node {
       stage('JIRA') {
         def NewJiraIssue = [fields: [project: [key: 'DEV'],
-            summary: 'Maven Build',
-            description: 'Facing some issue in building Maven Code',
+            summary: 'Build Failed',
+            description: 'Build failed! need to see code',
             issuetype: [name:'Task']]]
 
 
-    response = jiraNewIssue issue: NewJiraIssue ,site: 'JIRA'
+    response = jiraNewIssue issue: NewJiraIssue, site:'JIRA'
+
+    echo response.successful.toString()
+    echo response.data.toString()
+    }
+  }
+}
+void create_newjira_issuesuc() {
+    node {
+      stage('JIRA') {
+        def NewJiraIssue = [fields: [project: [key: 'DEV'],
+            summary: 'Build Success',
+            description: 'Successfully built! Yay',
+            issuetype: [name:'Task']]]
+
+
+    response = jiraNewIssue issue: NewJiraIssue, site:'JIRA'
 
     echo response.successful.toString()
     echo response.data.toString()
