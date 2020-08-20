@@ -18,7 +18,7 @@ pipeline {
                  branches: [[name: 'master']],
                  userRemoteConfigs: [[
                     url: 'git@github.com:prabhat2020/Jira.git',
-                    credentialsId: '',
+                    credentialsId: 'github-prabhat',
                  ]]
                 ])
             }
