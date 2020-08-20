@@ -1,6 +1,9 @@
+properties([pipelineTriggers([githubPush()])])
 
 pipeline {
-       agent any
+       agent {
+        label 'github-ci'
+    }
   tools {
     maven 'Maven'
   }
@@ -9,6 +12,22 @@ pipeline {
    registryCredential = "06216ef3-ad77-49a6-a37b-e2e91cd08bfb"
   }
   stages {
+         
+         stage('Checkout SCM') {
+            steps {
+                checkout([
+                 $class: 'GitSCM',
+                 branches: [[name: 'master']],
+                 userRemoteConfigs: [[
+                    url: 'git@github.com:prabhat2020/Jira.git',
+                    credentialsId: '',
+                 ]]
+                ])
+            }
+        }
+         
+         
+         
     stage('Initialize'){
       steps{
         echo "We are doing some test"
