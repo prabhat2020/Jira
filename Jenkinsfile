@@ -15,19 +15,7 @@ pipeline {
         }
     }
          
-         
-         stage('Checkout SCM') {
-            steps {
-                checkout([
-                 $class: 'GitSCM',
-                 branches: [[name: 'master']],
-                 userRemoteConfigs: [[
-                    url: 'git@github.com:prabhat2020/Jira.git',
-                    
-                 ]]
-                ])
-            }
-        }
+       
          
          
          
