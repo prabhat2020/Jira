@@ -2,7 +2,7 @@ properties([pipelineTriggers([githubPush()])])
 
 pipeline {
        agent {
-        label 'github-ci'
+        label 'github-prabhat'
     }
   tools {
     maven 'Maven'
