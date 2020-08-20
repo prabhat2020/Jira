@@ -5,10 +5,7 @@ pipeline {
   tools {
     maven 'Maven'
   }
-  environment {
-   registry = "prabhat2020/testing4"
-   registryCredential = "06216ef3-ad77-49a6-a37b-e2e91cd08bfb"
-  }
+  
   stages {
          
          stage('Checkout SCM') {
@@ -28,7 +25,7 @@ pipeline {
          
     stage('Initialize'){
       steps{
-        echo "We are doing some test for integration"
+        echo "test for pipeline"
         echo "PATH = ${PATH}"
         }
     }
@@ -42,7 +39,7 @@ pipeline {
   }
 post {
        always {
-            echo 'I will always say Hello again!'
+            echo 'check for jira'
      create_newjira_issue()
        }
     }
