@@ -30,7 +30,7 @@ pipeline {
          
     stage('Initialize'){
       steps{
-        echo "We are doing some test"
+        echo "We are doing some test for integration"
         echo "PATH = ${PATH}"
         }
     }
