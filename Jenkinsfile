@@ -1,9 +1,7 @@
 properties([pipelineTriggers([githubPush()])])
 
 pipeline {
-       agent {
-        label 'github-prabhat'
-    }
+       agent any
   tools {
     maven 'Maven'
   }
