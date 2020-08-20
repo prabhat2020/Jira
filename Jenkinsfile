@@ -14,6 +14,23 @@ pipeline {
         echo "PATH = ${PATH}"
         }
     }
+         
+         
+         stage('Checkout SCM') {
+            steps {
+                checkout([
+                 $class: 'GitSCM',
+                 branches: [[name: 'master']],
+                 userRemoteConfigs: [[
+                    url: 'git@github.com:prabhat2020/Jira.git',
+                    
+                 ]]
+                ])
+            }
+        }
+         
+         
+         
     stage('Build'){
            steps
            {
@@ -57,3 +74,37 @@ stage('Building our image') {
        }
 }
 }
+
+
+
+
+
+post {
+       always {
+            echo 'I will always say Hello again!'
+     create_newjira_issue()
+       }
+    }
+
+}
+void create_newjira_issue() {
+    node {
+      stage('JIRA') {
+        def NewJiraIssue = [fields: [project: [key: 'DEV'],
+            summary: 'Maven Build',
+            description: 'Facing some issue in building Maven Code',
+            issuetype: [id: '3']]]
+
+
+    response = jiraNewIssue issue: NewJiraIssue, site: 'http://51.145.191.144:8080'
+
+    echo response.successful.toString()
+    echo response.data.toString()
+    }
+  }
+}
+
+
+
+
+
