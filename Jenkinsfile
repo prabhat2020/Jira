@@ -17,7 +17,7 @@ pipeline {
                  $class: 'GitSCM',
                  branches: [[name: 'master']],
                  userRemoteConfigs: [[
-                    url: 'git@github.com:prabhat2020/Jira.git',
+                    url: 'https://github.com/prabhat2020/Jira.git',
                     credentialsId: 'github-prabhat',
                  ]]
                 ])
