@@ -60,7 +60,7 @@ void create_jira_fail() {
             issuetype: [name:'Task']]],
             
 
-    response = jiraNewIssue issue: NewJiraIssue, site:'JIRA'
+    response = jiraNewIssue issue: NewJiraIssue, site:'JIRA' ,userName: 'kprabhat0123@outlook.com'
 
     echo response.successful.toString()
     echo response.data.toString()
@@ -77,7 +77,7 @@ void create_jira_success() {
             
 
 
-    response = jiraNewIssue issue: NewJiraIssue, site:'JIRA'
+    response = jiraNewIssue issue: NewJiraIssue, site:'JIRA' , userName: 'kprabhat0123@outlook.com'
 
     echo response.successful.toString()
     echo response.data.toString()
