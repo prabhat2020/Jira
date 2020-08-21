@@ -57,7 +57,7 @@ void create_jira_fail() {
         def NewJiraIssue = [fields: [project: [key: 'DEV'],
             summary: 'Build Failed',
             description: 'Build failed! need to see code',
-            userName: 'kprabhat0123@outlook.com'
+            userName: 'kprabhat0123@outlook.com',
             issuetype: [name:'Task']]]
             
 
