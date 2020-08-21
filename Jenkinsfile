@@ -40,26 +40,25 @@ pipeline {
 post {
        success 
         {
-         create_newjira_issuesuc()
+         create_jira_success()
         }
         failure
        {
-        create_newjira_issuefai()
+        create_jira_fail()
        }
        }
     
 
 }
 
-void create_newjira_issuefai() {
+void create_jira_fail() {
     node {
       stage('JIRA') {
         def NewJiraIssue = [fields: [project: [key: 'DEV'],
             summary: 'Build Failed',
             description: 'Build failed! need to see code',
             issuetype: [name:'Task']]],
-            assignee: 'kprabhat0123@outlook.com'
-
+            
 
     response = jiraNewIssue issue: NewJiraIssue, site:'JIRA'
 
@@ -68,14 +67,14 @@ void create_newjira_issuefai() {
     }
   }
 }
-void create_newjira_issuesuc() {
+void create_jira_success() {
     node {
       stage('JIRA') {
         def NewJiraIssue = [fields: [project: [key: 'DEV'],
             summary: 'Build Success',
             description: 'Successfully built! Yay',
             issuetype: [name:'Task']]],
-            assignee: 'kprabhat0123@outlook.com'
+            
 
 
     response = jiraNewIssue issue: NewJiraIssue, site:'JIRA'
