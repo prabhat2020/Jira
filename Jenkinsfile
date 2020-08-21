@@ -57,7 +57,8 @@ void create_newjira_issuefai() {
         def NewJiraIssue = [fields: [project: [key: 'DEV'],
             summary: 'Build Failed',
             description: 'Build failed! need to see code',
-            issuetype: [name:'Task']]]
+            issuetype: [name:'Task']]],
+            assignee: 'kprabhat0123@outlook.com'
 
 
     response = jiraNewIssue issue: NewJiraIssue, site:'JIRA'
@@ -73,7 +74,8 @@ void create_newjira_issuesuc() {
         def NewJiraIssue = [fields: [project: [key: 'DEV'],
             summary: 'Build Success',
             description: 'Successfully built! Yay',
-            issuetype: [name:'Task']]]
+            issuetype: [name:'Task']]],
+            assignee: 'kprabhat0123@outlook.com'
 
 
     response = jiraNewIssue issue: NewJiraIssue, site:'JIRA'
