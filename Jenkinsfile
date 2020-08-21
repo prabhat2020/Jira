@@ -57,10 +57,11 @@ void create_jira_fail() {
         def NewJiraIssue = [fields: [project: [key: 'DEV'],
             summary: 'Build Failed',
             description: 'Build failed! need to see code',
-            issuetype: [name:'Task']]],
+            userName: 'kprabhat0123@outlook.com'
+            issuetype: [name:'Task']]]
             
 
-    response = jiraNewIssue issue: NewJiraIssue, site:'JIRA' ,assignee: 'kprabhat0123@outlook.com'
+    response = jiraNewIssue issue: NewJiraIssue, site:'JIRA' 
 
     echo response.successful.toString()
     echo response.data.toString()
@@ -73,11 +74,11 @@ void create_jira_success() {
         def NewJiraIssue = [fields: [project: [key: 'DEV'],
             summary: 'Build Success',
             description: 'Successfully built! Yay',
-            issuetype: [name:'Task']]],
+            issuetype: [name:'Task']]]
             
 
 
-    response = jiraNewIssue issue: NewJiraIssue, site:'JIRA' , assignee: 'kprabhat0123@outlook.com'
+    response = jiraNewIssue issue: NewJiraIssue, site:'JIRA' 
 
     echo response.successful.toString()
     echo response.data.toString()
